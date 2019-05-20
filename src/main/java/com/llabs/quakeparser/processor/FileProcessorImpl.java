@@ -1,5 +1,8 @@
-package com.llabs.quakeparser.service;
+package com.llabs.quakeparser.processor;
 
+import com.llabs.quakeparser.service.FileService;
+import com.llabs.quakeparser.service.IGameService;
+import com.llabs.quakeparser.service.ILineProcessor;
 import com.llabs.quakeparser.web.model.GameViewModel;
 import com.llabs.quakeparser.web.model.KillViewModel;
 import org.slf4j.Logger;
@@ -12,10 +15,8 @@ import org.springframework.stereotype.Component;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Component("fileProcessor")
 public class FileProcessorImpl {
@@ -28,20 +29,18 @@ public class FileProcessorImpl {
     @Autowired
     private IGameService gameService;
 
+    @Autowired
+    private FileService alexService;
+
     @Bean
     public CommandLineRunner fillDatabase(ApplicationContext ctx) {
 
-        Path file;
-
-        List<GameViewModel> games = new ArrayList<>();
-
-        try (Stream<Path> path = Files.list(Paths.get("requirements"))){
-            Stream<Path> paths = path.filter(p1 -> p1.getFileName().toString().matches(".*\\.log"));
-            logger.info("paths: " + paths);
-            if (paths != null && (file = paths.findFirst().get()) != null ) {
-                logger.info("File: " + file);
-
+        final String logFolder = "requirements";
+        Path file = alexService.getFile(logFolder);
+        try {
+            if (file != null) {
                 List<String> lines = Files.readAllLines(file);
+                List<GameViewModel> games = new ArrayList<>();
 
                 GameViewModel game = null;
                 KillViewModel kill = null;
@@ -58,9 +57,11 @@ public class FileProcessorImpl {
                         game = null;
                     }
                 }
+                gameService.create(games);
+            } else {
+                logger.warn("Não há arquivos na pasta");
             }
 
-            gameService.create(games);
         } catch (Exception e) {
             logger.error(e.toString(), e);
         }

@@ -30,13 +30,13 @@ public class FileProcessorImpl {
     private IGameService gameService;
 
     @Autowired
-    private FileService alexService;
+    private FileService fileService;
 
     @Bean
     public CommandLineRunner fillDatabase(ApplicationContext ctx) {
 
         final String logFolder = "requirements";
-        Path file = alexService.getFile(logFolder);
+        Path file = fileService.getFile(logFolder);
         try {
             if (file != null) {
                 List<String> lines = Files.readAllLines(file);
@@ -51,7 +51,8 @@ public class FileProcessorImpl {
                         game.setStart(time);
                     } else if ((kill = fileLineProcessor.getKill(line)) != null) {
                         game.getKills().add(kill);
-                    } else if ((time = fileLineProcessor.getFinish(line)) != null) {
+                    } else if ((time = fileLineProcessor.getFinish(line)) != null ||
+                            (game != null && line.contains("------------"))) {
                         game.setFinish(time);
                         games.add(game);
                         game = null;

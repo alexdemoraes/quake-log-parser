@@ -18,8 +18,8 @@ import java.util.Map;
 @Service
 public class GameServiceImpl implements IGameService {
 
-    private final static List<String> EMPTY_LIST = new ArrayList();
-    private final static List<String> UNDESIRABLE_PLAYERS = new ArrayList(Arrays.asList("<world>"));
+    protected final static List<String> EMPTY_LIST = new ArrayList();
+    protected final static List<String> UNDESIRABLE_PLAYERS = new ArrayList(Arrays.asList("<world>"));
     private static Logger logger = LoggerFactory.getLogger(GameServiceImpl.class);
 
     @Autowired

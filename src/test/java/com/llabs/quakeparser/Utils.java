@@ -1,14 +1,13 @@
 package com.llabs.quakeparser;
 
+import com.llabs.quakeparser.dao.model.GameEntity;
+import com.llabs.quakeparser.dao.model.KillEntity;
 import com.llabs.quakeparser.web.model.GameStatisticsViewModel;
 import com.llabs.quakeparser.web.model.GameViewModel;
 import com.llabs.quakeparser.web.model.KillCountByPlayerViewModel;
 import com.llabs.quakeparser.web.model.KillViewModel;
-import org.springframework.boot.test.context.TestComponent;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Utils {
 
@@ -20,6 +19,10 @@ public class Utils {
 
     public static final String PUNCH = "Punch";
     public static final String GUNSHOT = "Gunshot";
+
+    public static final String ID = "id";
+    public static final String PLAYER_NAME = "playerName";
+    public static final String KILL_COUNT = "count";
 
     /* game view models */
 
@@ -160,5 +163,157 @@ public class Utils {
         list.add(killCountViewModel2());
         return list;
     }
+
+    /* entities */
+
+    /* game entities */
+
+    public GameEntity gameEntity1() {
+        GameEntity entity = new GameEntity();
+        entity.setId(1);
+        entity.setStart("0:00");
+        entity.setFinish("3:14");
+        entity.setKills(killsEntityList1());
+        return entity;
+    }
+
+    public GameEntity gameEntity2() {
+        GameEntity entity = new GameEntity();
+        entity.setId(2);
+        entity.setStart("0:00");
+        entity.setFinish("3:14");
+        entity.setKills(killsEntityList2());
+        return entity;
+    }
+
+    /* game entity list */
+
+    public List<GameEntity> gamesEntityList1() {
+        List<GameEntity> list = new ArrayList<>();
+        list.add(gameEntity1());
+        return list;
+    }
+
+
+    public List<GameEntity> gamesEntityList2() {
+        List<GameEntity> list = new ArrayList<>();
+        list.add(gameEntity1());
+        list.add(gameEntity2());
+        return list;
+    }
+
+
+    /* kill entities */
+    public KillEntity killEntity1() {
+        KillEntity entity = new KillEntity();
+        entity.setId(1);
+        entity.setPlayer(JASON_PLAYER);
+        entity.setKilled(KENNY_PLAYER);
+        entity.setMode(GUNSHOT);
+        return entity;
+    }
+
+    public KillEntity killEntity2() {
+        KillEntity entity = new KillEntity();
+        entity.setId(2);
+        entity.setPlayer(WORLD_PLAYER);
+        entity.setKilled(ALEX_PLAYER);
+        entity.setMode(PUNCH);
+        return entity;
+    }
+
+    /* kill entity lists */
+    public List<KillEntity> killsEntityList1() {
+        List<KillEntity> list = new ArrayList<>();
+        list.add(killEntity1());
+        return list;
+    }
+
+    public List<KillEntity> killsEntityList2() {
+        List<KillEntity> list = new ArrayList<>();
+        list.add(killEntity1());
+        list.add(killEntity2());
+        return list;
+    }
+
+
+
+
+
+
+
+    /* Statistics helpers */
+
+    /* game statistics helper */
+//    public GameStatisticsViewModel gameStatisticsViewModel1() {
+//        GameStatisticsViewModel viewModel = new GameStatisticsViewModel();
+//        viewModel.setId(1);
+//        viewModel.setStart("0:00");
+//        viewModel.setFinish("3:14");
+//        viewModel.setTotalKills(10L);
+//        viewModel.setPlayers(
+//                new ArrayList<>(Arrays.asList(JASON_PLAYER)));
+//        viewModel.setKills(killCountsModelList1());
+//        return viewModel;
+//    }
+//
+//    public GameStatisticsViewModel gameStatisticsViewModel2() {
+//        GameStatisticsViewModel viewModel = new GameStatisticsViewModel();
+//        viewModel.setId(2);
+//        viewModel.setStart("0:00");
+//        viewModel.setFinish("3:14");
+//        viewModel.setTotalKills(20L);
+//        viewModel.setPlayers(
+//                new ArrayList<>(Arrays.asList(JASON_PLAYER, FRED_PLAYER)));
+//        viewModel.setKills(killCountsModelList2());
+//        return viewModel;
+//    }
+//
+//    public List<GameStatisticsViewModel> gameStatisticsModelList1() {
+//        List<GameStatisticsViewModel> list = new ArrayList<>();
+//        list.add(gameStatisticsViewModel1());
+//        return list;
+//    }
+//
+//
+//    public List<GameStatisticsViewModel> gameStatisticsModelList2() {
+//        List<GameStatisticsViewModel> list = new ArrayList<>();
+//        list.add(gameStatisticsViewModel1());
+//        list.add(gameStatisticsViewModel2());
+//        return list;
+//    }
+
+
+    public Map<Object, Object> killCountMap1() {
+        Map<Object, Object> map = new HashMap<>();
+        map.put(ID, 1);
+        map.put(PLAYER_NAME, JASON_PLAYER);
+        map.put(KILL_COUNT, 5L);
+        return map;
+    }
+
+    public Map<Object, Object> killCountMap2() {
+        Map<Object, Object> map = new HashMap<>();
+        map.put(ID, 2);
+        map.put(PLAYER_NAME, FRED_PLAYER);
+        map.put(KILL_COUNT, 5L);
+        return map;
+    }
+
+
+    public List<Map<Object, Object>> killCountMapList1() {
+        List<Map<Object, Object>> list = new ArrayList<>();
+        list.add(killCountMap1());
+        return list;
+    }
+
+    public List<Map<Object, Object>> killCountMapList2() {
+        List<Map<Object, Object>> list = new ArrayList<>();
+        list.add(killCountMap1());
+        list.add(killCountMap2());
+        return list;
+    }
+
+
 
 }

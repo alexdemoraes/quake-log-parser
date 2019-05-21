@@ -60,13 +60,7 @@ public class GameServiceImpl implements IGameService {
 
         GameEntity entity = gameDAO.find(gameId);
         if (entity != null) {
-            List<Map<Object, Object>> total = gameDAO.getTotalKills(gameId, EMPTY_LIST);
-            Long totalKills = 0L;
-            if (total != null) {
-                totalKills = (Long) total.get(0).get("count");
-            }
-            List<Map<Object, Object>> kills = gameDAO.getTotalKillsByPlayer(gameId, UNDESIRABLE_PLAYERS);
-            viewModel = GameEntityMapper.from(entity, totalKills, kills);
+            viewModel = getByEntity(entity);
         }
 
         return viewModel;
@@ -79,8 +73,29 @@ public class GameServiceImpl implements IGameService {
         List<GameStatisticsViewModel> list = new ArrayList<>();
 
         for (GameEntity game : games) {
-            list.add(getById(game.getId()));
+            list.add(getByEntity(game));
         }
         return list;
     }
+
+    /**
+     * gets a
+     */
+    private GameStatisticsViewModel getByEntity(GameEntity entity) {
+
+        GameStatisticsViewModel viewModel = null;
+
+        List<Map<Object, Object>> total = gameDAO.getTotalKills(entity.getId(), EMPTY_LIST);
+        Long totalKills = 0L;
+        if (total != null) {
+            totalKills = (Long) total.get(0).get("count");
+        }
+        List<Map<Object, Object>> kills =
+                gameDAO.getTotalKillsByPlayer(entity.getId(), UNDESIRABLE_PLAYERS);
+        viewModel = GameEntityMapper.from(entity, totalKills, kills);
+
+        return viewModel;
+    }
+
+
 }

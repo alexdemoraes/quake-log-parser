@@ -49,7 +49,7 @@ After changing directory, run:
 [user@machine quake-log-parser]$  java -jar target/quake-log-parser-0.1.0-SNAPSHOT.jar
 ```
 After about 15 seconds (depending on the power of your machine) the application will be up and responding HTTP requests.
-You can query the game statistics using any of the [endpoints](#Endpoints list) below.
+You can query the game statistics using any of the [endpoints](#Endpoints) below.
 
 
 ### Stopping the application
@@ -70,7 +70,7 @@ You can see the results opening the file **target/site/jacoco/index.html** in a 
 
 ---
 
-## Endpoints list:
+## Endpoints:
 
 - [**GET** /games/entities](#getEntities)
 - [**GET** /games](#getStatistics)

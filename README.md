@@ -48,8 +48,8 @@ After changing directory, run:
 ```
 [user@machine quake-log-parser]$  java -jar target/quake-log-parser-0.1.0-SNAPSHOT.jar
 ```
-After about 15 seconds (depending on the power of your machine) the application will be
-You can query the game statistics using any of the [endpoints](#Endpoints) below.
+After about 15 seconds (depending on the power of your machine) the application will be up and responding HTTP requests.
+You can query the game statistics using any of the [endpoints](#Endpoints list) below.
 
 
 ### Stopping the application
@@ -160,7 +160,7 @@ curl -i --header "Content-Type: application/json" --request GET http://localhost
 		"killed": "Isgalamido",
 		"mode": "MOD_TRIGGER_HURT"
 	}]
-}...
+},...
 ]
 ```
 
@@ -201,7 +201,7 @@ curl -i --header "Content-Type: application/json" --request GET http://localhost
 		"count": 3
 	}],
 	"total_kills": 11
-}...
+},...
 ]
 ```
 

@@ -237,52 +237,9 @@ public class Utils {
     }
 
 
-
-
-
-
-
     /* Statistics helpers */
 
     /* game statistics helper */
-//    public GameStatisticsViewModel gameStatisticsViewModel1() {
-//        GameStatisticsViewModel viewModel = new GameStatisticsViewModel();
-//        viewModel.setId(1);
-//        viewModel.setStart("0:00");
-//        viewModel.setFinish("3:14");
-//        viewModel.setTotalKills(10L);
-//        viewModel.setPlayers(
-//                new ArrayList<>(Arrays.asList(JASON_PLAYER)));
-//        viewModel.setKills(killCountsModelList1());
-//        return viewModel;
-//    }
-//
-//    public GameStatisticsViewModel gameStatisticsViewModel2() {
-//        GameStatisticsViewModel viewModel = new GameStatisticsViewModel();
-//        viewModel.setId(2);
-//        viewModel.setStart("0:00");
-//        viewModel.setFinish("3:14");
-//        viewModel.setTotalKills(20L);
-//        viewModel.setPlayers(
-//                new ArrayList<>(Arrays.asList(JASON_PLAYER, FRED_PLAYER)));
-//        viewModel.setKills(killCountsModelList2());
-//        return viewModel;
-//    }
-//
-//    public List<GameStatisticsViewModel> gameStatisticsModelList1() {
-//        List<GameStatisticsViewModel> list = new ArrayList<>();
-//        list.add(gameStatisticsViewModel1());
-//        return list;
-//    }
-//
-//
-//    public List<GameStatisticsViewModel> gameStatisticsModelList2() {
-//        List<GameStatisticsViewModel> list = new ArrayList<>();
-//        list.add(gameStatisticsViewModel1());
-//        list.add(gameStatisticsViewModel2());
-//        return list;
-//    }
-
 
     public Map<Object, Object> killCountMap1() {
         Map<Object, Object> map = new HashMap<>();

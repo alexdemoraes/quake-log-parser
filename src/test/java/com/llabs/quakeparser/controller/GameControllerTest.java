@@ -81,7 +81,7 @@ public class GameControllerTest {
                 willReturn(utils.gameStatisticsModelList2());
 
 
-        mvc.perform( get("/games/").
+        mvc.perform( get("/games").
                 contentType(contentType)).
                 andDo(print()).
                 andExpect(status().isOk()).

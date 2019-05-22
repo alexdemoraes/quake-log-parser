@@ -37,7 +37,7 @@ public class GameController {
     /**
      * Lists statistics of all games
      */
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<GameStatisticsViewModel>> getStatistics() {
         List<GameStatisticsViewModel> games = gameService.getStatistics();
         return new ResponseEntity<>(games, HttpStatus.OK);

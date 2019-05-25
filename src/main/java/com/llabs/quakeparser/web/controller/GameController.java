@@ -48,7 +48,7 @@ public class GameController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<GameStatisticsViewModel> getGameStatistics(@PathVariable Integer id) {
-        GameStatisticsViewModel game = gameService.getById(id);
+        GameStatisticsViewModel game = gameService.getStatistics(id);
         if (game == null) {
             throw new NotFoundException(NOT_FOUND_MESSAGE);
         }

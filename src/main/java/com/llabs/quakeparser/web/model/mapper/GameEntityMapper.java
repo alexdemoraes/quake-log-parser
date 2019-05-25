@@ -55,11 +55,8 @@ public class GameEntityMapper {
     public static GameStatisticsViewModel from(GameEntity entity,
                                                Long totalKills,
                                                List<Map<Object, Object>> killCountByPlayer)  {
-        GameStatisticsViewModel viewModel = new GameStatisticsViewModel();
-        viewModel.setId(entity.getId());
-        viewModel.setStart(entity.getStart());
-        viewModel.setFinish(entity.getFinish());
-        viewModel.setTotalKills(totalKills);
+        GameStatisticsViewModel viewModel = from(entity, totalKills);
+
         if (totalKills > 0) {
             for (Map<Object, Object> line : killCountByPlayer) {
                 KillCountByPlayerViewModel killCount = KillCountByPlayerMapper.from(line);
@@ -72,4 +69,35 @@ public class GameEntityMapper {
         return viewModel;
     }
 
+    /**
+     * Creates a GameStatisticsViewModel from a entity, long and a map
+     * @param entity an entity
+     * @param totalKills the total number of kills
+     * @param killCountByPlayer a list of maps containing the player's name and kill count
+     * @return a view
+     */
+    public static GameStatisticsViewModel from(GameEntity entity,
+                                               Long totalKills,
+                                               Map<String, Long> killCountByPlayer)  {
+        GameStatisticsViewModel viewModel = from(entity, totalKills);
+
+        for (Object key : killCountByPlayer.keySet()) {
+            KillCountByPlayerViewModel killCount = new KillCountByPlayerViewModel();
+            killCount.setName(key.toString());
+            killCount.setCount(killCountByPlayer.get(key));
+            viewModel.getKills().add(killCount);
+        }
+        return viewModel;
+    }
+
+
+    private static GameStatisticsViewModel from(GameEntity entity, Long totalKills) {
+        GameStatisticsViewModel viewModel = new GameStatisticsViewModel();
+        viewModel.setId(entity.getId());
+        viewModel.setStart(entity.getStart());
+        viewModel.setFinish(entity.getFinish());
+        viewModel.setTotalKills(totalKills);
+
+        return viewModel;
+    }
 }

@@ -99,7 +99,7 @@ public class GameControllerTest {
 
     @Test
     public void listSpecificGameStatisticsSuccess() throws Exception {
-        given(service.getById(1)).
+        given(service.getStatistics(1)).
                 willReturn(utils.gameStatisticsViewModel1());
 
 
@@ -121,7 +121,7 @@ public class GameControllerTest {
 
     @Test
     public void listSpecificGameStatisticsNotFound() throws Exception {
-        given(service.getById(314)).
+        given(service.getStatistics(314)).
                 willReturn(null);
 
         mvc.perform( get("/games/314").

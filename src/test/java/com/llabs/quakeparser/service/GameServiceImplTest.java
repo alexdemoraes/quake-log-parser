@@ -68,7 +68,7 @@ public class GameServiceImplTest {
         given(dao.getTotalKillsByPlayer(id1, GameServiceImpl.UNDESIRABLE_PLAYERS)).
                 willReturn(utils.killCountMapList1());
 
-        GameStatisticsViewModel viewModel = gameService.getById(id1);
+        GameStatisticsViewModel viewModel = gameService.getGameKillerStatistics(id1);
 
         Assert.assertEquals(entity1.getId(), viewModel.getId());
         Assert.assertEquals(entity1.getStart(), viewModel.getStart());
@@ -83,7 +83,7 @@ public class GameServiceImplTest {
         Integer id = 25;
         given(dao.find(id)).willReturn(null);
 
-        GameStatisticsViewModel viewModel = gameService.getById(id);
+        GameStatisticsViewModel viewModel = gameService.getGameKillerStatistics(id);
 
         Assert.assertNull(viewModel);
     }
@@ -119,7 +119,7 @@ public class GameServiceImplTest {
         given(dao.getTotalKillsByPlayer(id2, GameServiceImpl.UNDESIRABLE_PLAYERS)).
                 willReturn(utils.killCountMapList2());
 
-        List<GameStatisticsViewModel> viewModelList = gameService.getStatistics();
+        List<GameStatisticsViewModel> viewModelList = gameService.getGameKillerStatistics();
 
         Assert.assertEquals(entityList.get(0).getId(), viewModelList.get(0).getId());
         Assert.assertEquals(entityList.get(0).getStart(), viewModelList.get(0).getStart());

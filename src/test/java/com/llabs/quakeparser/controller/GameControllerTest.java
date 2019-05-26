@@ -46,7 +46,7 @@ public class GameControllerTest {
     @Autowired
     void setConverters(HttpMessageConverter<?>[] converters) {
 
-        this.mappingJackson2HttpMessageConverter = Arrays.asList(converters).stream()
+        this.mappingJackson2HttpMessageConverter = Arrays.stream(converters)
                 .filter(hmc -> hmc instanceof MappingJackson2HttpMessageConverter)
                 .findAny()
                 .orElse(null);
@@ -71,7 +71,7 @@ public class GameControllerTest {
                 andExpect(status().isOk()).
                 andExpect(
                         jsonPath("$[1].kills[1].player").
-                                value(utils.WORLD_PLAYER));
+                                value(Utils.WORLD_PLAYER));
     }
 
 
@@ -87,7 +87,7 @@ public class GameControllerTest {
                 andExpect(status().isOk()).
                 andExpect(
                         jsonPath("$[1].kills[1].name").
-                                value(utils.FRED_PLAYER)).
+                                value(Utils.FRED_PLAYER)).
                 andExpect(
                         jsonPath("$[1].kills[1].count").
                                 value(5L)).

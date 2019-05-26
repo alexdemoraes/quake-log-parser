@@ -26,14 +26,13 @@ public class KillEntityMapper {
      * @return a view
      */
     public static KillViewModel from(KillEntity entity) {
-        KillViewModel viewModel =
+        return
                 new KillViewModel(
                     entity.getId(),
                     entity.getPlayer(),
                     entity.getKilled(),
                     entity.getMode()
                 );
-        return viewModel;
     }
 
 }

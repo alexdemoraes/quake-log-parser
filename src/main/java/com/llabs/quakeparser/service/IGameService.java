@@ -8,9 +8,9 @@ import java.util.List;
 public interface IGameService {
 
     /* CRUD operations*/
-    public List<GameViewModel> list();
-    public void create(GameViewModel game);
-    public void create(List<GameViewModel> games);
+    List<GameViewModel> list();
+    void create(GameViewModel game);
+    void create(List<GameViewModel> games);
 
 
 
@@ -21,7 +21,7 @@ public interface IGameService {
      * returns a list of game statistics as {@link #getStatistics(Integer)}
      * @return a list
      */
-    public List<GameStatisticsViewModel> getStatistics();
+    List<GameStatisticsViewModel> getStatistics();
     /**
      * getStatistics(Integer gameId)
      * @return a game statistics object with all the players and the count of kills. WORLD kills
@@ -30,7 +30,7 @@ public interface IGameService {
      *      WORLD has killed Alex 2 times
      *      Alex count will be 2
      */
-    public GameStatisticsViewModel getStatistics(Integer gameId);
+    GameStatisticsViewModel getStatistics(Integer gameId);
 
 
     /* Custom queries */
@@ -40,10 +40,10 @@ public interface IGameService {
      * returns a list of game killer statistics as {@link #getGameKillerStatistics(Integer)}
      * @return a list
      */
-    public List<GameStatisticsViewModel> getGameKillerStatistics();
+    List<GameStatisticsViewModel> getGameKillerStatistics();
     /**
      * getGameKillerStatistics(Integer gameId)
      * @return a game statistics object with all the killers and the count of kills.
      */
-    public GameStatisticsViewModel getGameKillerStatistics(Integer id);
+    GameStatisticsViewModel getGameKillerStatistics(Integer id);
 }

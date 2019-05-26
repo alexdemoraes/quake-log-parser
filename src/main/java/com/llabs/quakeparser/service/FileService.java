@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 @Service("fileService")
 public class FileService {
 
-    private static Logger logger = LoggerFactory.getLogger(FileService.class);
+    private static final Logger logger = LoggerFactory.getLogger(FileService.class);
 
     public Path getFile(String folder) {
         Path file = null;

@@ -17,8 +17,8 @@ import java.util.*;
 public class GameServiceImpl implements IGameService {
 
     protected final static  String WORLD_PLAYER = "<world>";
-    protected final static List<String> EMPTY_LIST = new ArrayList();
-    protected final static List<String> UNDESIRABLE_PLAYERS = new ArrayList(Arrays.asList(WORLD_PLAYER));
+    protected final static List<String> EMPTY_LIST = new ArrayList<>();
+    protected final static List<String> UNDESIRABLE_PLAYERS = new ArrayList<>(Arrays.asList(WORLD_PLAYER));
     private static Logger logger = LoggerFactory.getLogger(GameServiceImpl.class);
 
     @Autowired

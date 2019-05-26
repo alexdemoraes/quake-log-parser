@@ -4,11 +4,11 @@ import com.llabs.quakeparser.web.model.KillViewModel;
 
 public interface ILineProcessor {
 
-    public String getStart(String line);
+    String getStart(String line);
 
-    public KillViewModel getKill(String line);
+    KillViewModel getKill(String line);
 
-    public String getFinish(String line);
+    String getFinish(String line);
 
 }
 

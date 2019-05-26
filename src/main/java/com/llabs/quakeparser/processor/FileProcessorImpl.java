@@ -21,7 +21,7 @@ import java.util.List;
 @Component("fileProcessor")
 public class FileProcessorImpl {
 
-    private static Logger logger = LoggerFactory.getLogger(FileProcessorImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(FileProcessorImpl.class);
 
     @Autowired
     private ILineProcessor fileLineProcessor;

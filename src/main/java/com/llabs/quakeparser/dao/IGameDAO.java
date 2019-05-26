@@ -7,17 +7,16 @@ import java.util.Map;
 
 public interface IGameDAO {
 
-    public void add(GameEntity game);
+    void add(GameEntity game);
 
-    public void add(List<GameEntity> games);
+    void add(List<GameEntity> games);
 
-    public List<GameEntity> list();
+    List<GameEntity> list();
 
-    public GameEntity find(Integer gameId);
+    GameEntity find(Integer gameId);
 
-    public List<Map<Object, Object>> getTotalKills(Integer gameId, List<String> undesirablePlayers);
+    List<Map<Object, Object>> getTotalKills(Integer gameId, List<String> undesirablePlayers);
 
-    public List<Map<Object, Object>> getTotalKillsByPlayer(Integer gameId, List<String> undesirablePlayers);
-
+    List<Map<Object, Object>> getTotalKillsByPlayer(Integer gameId, List<String> undesirablePlayers);
 
 }

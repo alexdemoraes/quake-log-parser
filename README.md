@@ -195,10 +195,10 @@ curl -i --header "Content-Type: application/json" --request GET http://localhost
 }, {
 	"id": 2,
 	"start": "20:37",
-	"players": ["Isgalamido"],
+	"players": ["Mocinha", "Isgalamido"],
 	"kills": [{
 		"name": "Isgalamido",
-		"count": 3
+		"count": -5
 	}],
 	"total_kills": 11
 },...
@@ -231,7 +231,7 @@ curl -i --header "Content-Type: application/json" --request GET http://localhost
 	"id": 20,
 	"start": "6:10",
 	"finish": "6:34",
-	"players": ["Dono da Bola", "Oootsimo"],
+	"players": ["Dono da Bola","Assasinu Credi","Zeh","Oootsimo"],
 	"kills": [{
 		"name": "Dono da Bola",
 		"count": 2
